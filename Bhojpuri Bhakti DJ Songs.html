@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhojpuri Bhakti DJ Songs - DRJOSONGS.IN</title>
+    <style>
+        /* --- बेसिक सेटिंग (फुटर को नीचे रखने के लिए) --- */
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f4f7f6;
+            color: #000;
+            display: flex;
+            flex-direction: column; /* बॉडी को फ्लेक्स बनाया */
+        }
+      
+        /* यह हिस्सा बीच की खाली जगह को भर देगा */
+        .main-content {
+            flex: 1 0 auto;
+        }
+        /* --- हेडर: मुख्य ब्रांड नाम और सब-हेडर --- */
+        header { background-color: #b71c1c; color: white; padding: 15px; text-align: center; border-bottom: 4px solid #fff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        header h1 { margin: 0; font-size: 30px; font-weight: 900; letter-spacing: 1px; }
+        .sub-header { font-size: 13px; background: rgba(0,0,0,0.2); padding: 4px 15px; border-radius: 15px; display: inline-block; margin-top: 5px; font-weight: 600; text-transform: uppercase; }
+       
+        /* --- सेक्शन टाइटल --- */
+        .section-title { background-color: #000; color: #fff; padding: 10px 15px; font-size: 13px; font-weight: bold; text-transform: uppercase; }
+       
+        /* --- सॉन्ग लिस्टिंग डिजाइन --- */
+        .song-item { background: #fff; padding: 12px; border-bottom: 1px solid #eee; display: flex; align-items: center; justify-content: space-between; text-decoration: none; }
+        .mp3-icon { width: 35px; height: 35px; background-color: #b71c1c; color: white; display: flex; justify-content: center; align-items: center; border-radius: 3px; margin-right: 12px; font-size: 10px; font-weight: bold; }
+        .song-info { display: flex; align-items: center; text-decoration: none; color: #b71c1c; font-weight: 600; font-size: 14px; }
+        .download-btn { background-color: #2e7d32; color: white; text-decoration: none; padding: 7px 15px; font-size: 12px; border-radius: 4px; font-weight: bold; border: 1px solid #1b5e20; }
+       
+        /* --- नेविगेशन बटन --- */
+        .nav-container { text-align: center; margin: 30px 0; display: flex; justify-content: center; gap: 12px; }
+        .nav-btn { display: inline-block; padding: 10px 25px; background-color: #000; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 14px; }
+        .home-btn { background-color: #b71c1c; }
+       
+        /* --- फुटर (हमेशा नीचे रहेगा) --- */
+        footer {
+            flex-shrink: 0;
+            background-color: #000;
+            color: #888;
+            text-align: center;
+            padding: 25px;
+            font-size: 12px;
+            border-top: 3px solid #b71c1c;
+        }
+        /* मोबाइल रिस्पॉन्सिव */
+        @media (max-width: 600px) {
+            header h1 { font-size: 20px; }
+            .song-info { font-size: 12px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-content">
+        <header>
+            <h1>DRJOSONGS.IN</h1>
+            <div class="sub-header">Bhojpuri Bhakti DJ Song's</div>
+        </header>
+        <div class="section-title">Latest Track's:</div>
+        <div class="nav-container">
+            <a href="index.html" class="nav-btn home-btn">Home</a>
+            <a href="#" class="nav-btn">Next Page »</a>
+        </div>
+    </div>
+    <footer>
+        <div style="color:#b71c1c; font-weight:bold; font-size: 16px; margin-bottom: 5px;">DRJOSONGS.IN</div>
+        <div>Copyright © 2026 Reserved by DRJO</div>
+    </footer>
+    <script>
+    async function loadAutoSongs() {
+        try {
+            const response = await fetch('index.html');
+            const html = await response.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            // यहाँ 'holi-dj' क्लास वाले गानों को खोजा जा रहा है
+            const newSongs = doc.querySelectorAll('.update-item.bhojpuri-bhakti-dj');
+          
+            const listArea = document.querySelector('.section-title');
+            newSongs.forEach(song => {
+                const cleanSong = song.cloneNode(true);
+                cleanSong.className = 'song-item';
+                const icon = cleanSong.querySelector('.update-icon');
+                if(icon) {
+                    icon.className = 'mp3-icon';
+                    icon.innerText = 'MP3';
+                }
+                listArea.after(cleanSong);
+            });
+        } catch (e) {
+            console.log("System Ready...");
+        }
+    }
+    window.onload = loadAutoSongs;
+    </script>
+</body>
+</html>

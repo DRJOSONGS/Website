@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DRJO Remix Portal</title>
+    <style>
+/* --- 1. बेसिक बॉडी सेटिंग --- */
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #000000;
+        }
+/* --- 2. हेडर --- */
+        header {
+            background-color: #b71c1c;
+            color: #ffffff;
+            padding: 15px;
+            text-align: center;
+            border-bottom: 4px solid #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .header-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 1px solid #ffffff;
+            object-fit: cover;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+/* --- न्यूज़ स्क्रॉलिंग पट्टी --- */
+        .news-ticker {
+            background: #b71c1c;
+            color: #fff;
+            padding: 3px 0;
+            font-size: 11px;
+            font-weight: bold;
+            overflow: hidden;
+            white-space: nowrap;
+            border-bottom: 1px solid #000;
+            letter-spacing: 1px;
+        }
+        .news-ticker marquee {
+            vertical-align: middle;
+        }
+/* --- 3. सर्च एरिया (बदलाव: छोटा किया गया) --- */
+        .search-area {
+            background: #ffffff;
+            padding: 8px; /* पैडिंग कम की गई */
+            text-align: center;
+            border-bottom: 2px solid #ddd;
+        }
+        .search-area input {
+            width: 45%; /* चौड़ाई कम की गई */
+            padding: 8px;
+            border: 1px solid #999;
+            border-radius: 5px;
+            outline: none;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        .search-area button {
+            padding: 8px 15px;
+            background-color: #b71c1c;
+            color: #ffffff;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-left: 5px;
+            text-transform: uppercase;
+            font-size: 11px;
+        }
+/* --- 4. सेक्शन टाइटल्स --- */
+        .section-title {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 10px 15px;
+            font-size: 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+/* --- 5. लेटेस्ट अपडेट्स --- */
+        .update-item {
+            background: #ffffff;
+            padding: 12px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: 0.3s;
+        }
+        .update-item:hover {
+            background-color: #fff9f9;
+            border-left: 6px solid #b71c1c;
+        }
+        .song-info {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        .update-icon {
+            width: 35px;
+            height: 35px;
+            background-color: #b71c1c;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 3px;
+            margin-right: 15px;
+            font-size: 10px;
+            font-weight: bold;
+        }
+/* --- 6. गानों के नाम --- */
+        .song-name {
+            color: #b71c1c;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .clicked-red {
+            color: #ff0000 !important;
+        }
+/* --- 7. डाउनलोड बटन --- */
+        .download-btn {
+            background-color: #2e7d32;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 6px 15px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 4px;
+            border: 1px solid #1b5e20;
+            transition: 0.2s;
+        }
+        .download-btn:hover {
+            background-color: #1b5e20;
+            transform: scale(1.05);
+        }
+/* --- 8. कैटेगरी और लिस्ट --- */
+        .yt-list, .category-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            background: #fff;
+        }
+        .yt-list li, .category-list li {
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .yt-list a, .category-list a {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            text-decoration: none;
+            color: #000000;
+            font-weight: 600;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+        .folder-icon {
+            width: 18px;
+            height: 18px;
+            margin-right: 12px;
+            fill: #b71c1c;
+            transition: 0.3s;
+        }
+        .yt-list a:hover, .category-list a:hover {
+            background-color: #b71c1c;
+            color: #ffffff;
+            padding-left: 25px;
+        }
+        .yt-list a:hover .folder-icon, .category-list a:hover .folder-icon {
+            fill: #ffffff;
+        }
+/* --- 9. फुटर (बदलाव: चौड़ाई और टेक्स्ट छोटा किया गया) --- */
+        footer {
+            background-color: #000000;
+            border-top: 2px solid #b71c1c;
+            color: #888;
+            text-align: center;
+            padding: 10px 10px; /* पैडिंग कम की गई */
+            margin-top: 1px;
+        }
+        .copyright-box {
+            color: #b71c1c;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        .disclaimer {
+            font-size: 11px; /* डिस्क्रिप्शन टेक्स्ट बहुत छोटा किया गया */
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+        .footer-links a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 10px;
+        }
+  .footer-links a:hover {
+            color: #d32f2f; /* RED */
+        }
+        .social-icons {
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .social-icon-link {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+        .social-icon-link svg {
+            width: 18px;
+            height: 18px;
+            fill: #ffffff;
+        }
+        .social-icon-link.yt:hover { background-color: #FF0000; }
+        .social-icon-link.fb:hover { background-color: #1877F2; }
+        .social-icon-link.ig:hover { background-color: #E4405F; }
+        .social-icon-link.tg:hover { background-color: #0088cc; }
+        @media (max-width: 600px) {
+            header h1 { font-size: 20px; }
+            .header-logo { width: 45px; height: 45px; }
+            .search-area input { width: 50%; font-size: 11px; }
+            .song-name { font-size: 12px; }
+            .download-btn { padding: 4px 8px; font-size: 11px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="DRJO" class="header-logo">
+        <div>
+            <h1>DRJOSONGS.IN</h1>
+            <div style="font-size: 10px; letter-spacing: 2px;">Best Destination for MP3 Songs</div>
+        </div>
+        <img src="logo.png" alt="DRJO" class="header-logo">
+    </header>
+   
+    <div class="search-area">
+        <input type="text" placeholder="गाना खोजें ...">
+        <button>Search</button>
+    </div>
+<div class="news-ticker">
+        <marquee scrollamount="5">Welcome to DRJOSONGS.IN - यहाँ आपको मिलेंगे नए भोजपुरी और हिंदी DJ Remix गाने! डाउनलोड करें और आनंद लें !धन्यवाद!</marquee>
+    </div>
+    <div class="section-title">Latest Update's</div>
+    <div class="update-item hindi-bhakti">
+        <div class="song-info">
+            <div class="update-icon">MP3</div>
+            <div id="s1" class="song-name">Ram Siya Ram [Hard Dholki Mix] Dj Ravi Dhanbad.mp3</div>
+        </div>
+        <a href="download.html?name=Ram Siya Ram [Hard Dholki Mix] Dj Ravi Dhanbad.mp3&cat=Hindi Bhakti Dj Songs&size=6.56&link=https://www.mediafire.com/file/syk5dcxe292cbfz/Ram_Siya_Ram%255BHard_Dholki_Mix%255DDj_Ravi_Dhanbad.mp3/file" class="download-btn" onclick="makeRed('s1')">
+			Download
+		</a>
+    </div>
+    
+    <div class="update-item chhath-puja">
+        <div class="song-info">
+            <div class="update-icon">MP3</div>
+            <div id="s2" class="song-name">Aragh Mora Lei Lihin [Desi Jhumar Mix]  Dj Ravi Dhanbad.mp3</div>
+        </div>
+        <a href="download.html?name=Aragh Mora Lei Lihin [Desi Jhumar Mix]  Dj Ravi Dhanbad.mp3&cat=Chhath Puja Dj Songs&size=12.3&link=https://www.mediafire.com/file/syk5dcxe292cbfz/Ram_Siya_Ram%255BHard_Dholki_Mix%255DDj_Ravi_Dhanbad.mp3/file" class="download-btn" onclick="makeRed('s2')">
+            Download
+        </a>
+    </div>
+    <div class="update-item hindi-bhakti-dj">
+        <div class="song-info">
+            <div class="update-icon">MP3</div>
+            <div id="s3" class="song-name">Bam Bhole Bam [Hard Punch Bass Mix] Dj Ravi Dhanbad.mp3</div>
+        </div>
+        <a href="download.html?name=Bam Bhole Bam [Hard Punch Bass Mix] Dj Ravi Dhanbad.mp3&cat=Hindi Bhakti Dj Songs&size=6.56&link=https://www.mediafire.com/file/syk5dcxe292cbfz/Ram_Siya_Ram%255BHard_Dholki_Mix%255DDj_Ravi_Dhanbad.mp3/file" class="download-btn" onclick="makeRed('s3')">Download</a>
+    </div>
+    
+    <div class="update-item hindi-dj">
+        <div class="song-info">
+            <div class="update-icon">MP3</div>
+            <div id="s4" class="song-name">Amplifier [Hard Kick Mix] Dj Ravi Dhanbad.mp3</div>
+        </div>
+		<a href="download.html?name=Amplifier [Hard Kick Mix] Dj Ravi Dhanbad.mp3&size=5.16MB&cat=Hindi Dj Songs&link=https://www.mediafire.com/file/us3tk6ad8kngx4d/Amplifire_Dj_Ravi_Dhanbad.mp3/file" class="download-btn" onclick="makeRed('s4')">
+			Download
+		</a>
+    </div>
+    <div class="update-item hindi-bhakti-dj">
+        <div class="song-info">
+            <div class="update-icon">MP3</div>
+            <div id="s5" class="song-name">Har Har Shambhu [Desi Dholki Mix]  Dj Ravi Dhanbad.mp3</div>
+        </div>
+        <a href="download.html?name=Har Har Shambhu [Desi Dholki Mix] Dj Ravi Dhanbad.mp3&cat=Hindi Bhakti Dj Songs&size=6.56&link=https://www.mediafire.com/file/syk5dcxe292cbfz/Ram_Siya_Ram%255BHard_Dholki_Mix%255DDj_Ravi_Dhanbad.mp3/file" class="download-btn" onclick="makeRed('s5')">Download</a>
+    </div>
+    <div class="update-item hindi-bhakti-dj">
+        <div class="song-info">
+            <div class="update-icon">MP3</div>
+            <div id="s6" class="song-name">Meri Maa Ke Barabar [Humming Bass Mix]  Dj Ravi Dhanbad.mp3</div>
+        </div>
+        <a href="download.html?name=Meri Maa Ke Barabar [Humming Bass Mix]  Dj Ravi Dhanbad.mp3&size=7.39MB&cat=Sound Check Dj Songs&link=https://www.mediafire.com/file/ux89tshkg9rpj9v/Meri_Maa_Ke_Barabar_Dj_Ravi_Dhanbad.mp3/file" class="download-btn" onclick="makeRed('s6')">
+            Download
+        </a>
+    </div>
+    <div class="update-item holi-dj">
+        <div class="song-info">
+            <div class="update-icon">MP3</div>
+            <div id="s7" class="song-name">Ac Ac Lahanga Ac Khojata [Hard Bass Mix] Dj Ravi Dhanbad.mp3</div>
+        </div>
+		<a href="download.html?name=Ac Ac Lahanga Ac Khojata [Hard Bass Mix] Dj Ravi Dhanbad.mp3&size=12.22MB&cat=Holi Dj Songs&link=https://www.mediafire.com/file/hvhzl6j5de4odxq/Ac_Ac_Lahanga_Ac_Khojata_Dj_Ravi_Dhanbad.mp3/file" class="download-btn" onclick="makeRed('s7')">
+			Download
+		</a>
+    </div>
+    <div class="update-item holi-dj">
+        <div class="song-info">
+            <div class="update-icon">MP3</div>
+            <div id="s8" class="song-name">Mahanga Bhail Honth Laali [Fast Dance Mix] Dj Ravi Dhanbad.mp3</div>
+        </div>
+		<a href="download.html?name=Mahanga Bhail Honth Laali [Fast Dance Mix] Dj Ravi Dhanbad.mp3&size=8.14MB&cat=Holi Dj Songs&link=https://www.mediafire.com/file/7zj57s5bxb9q5jl/Mahanga_Bhail_Honth_Laali_Dj_Ravi_Dhanbad.mp3/file" class="download-btn" onclick="makeRed('s8')">
+			Download
+		</a>
+    </div>
+    <div class="update-item bhojpuri-dj">
+        <div class="song-info">
+            <div class="update-icon">MP3</div>
+            <div id="s9" class="song-name">Saree Se Tadi [Fully Dholki Mix] Dj Ravi Dhanbad.mp3</div>
+        </div>
+		<a href="download.html?name=Saree Se Tadi [Fully Dholki Mix] Dj Ravi Dhanbad.mp3&size=6.82MB&cat=Bhojpuri Dj Songs&link=https://www.mediafire.com/file/zp0ssuy3xkhvtlc/Sadi_Se_Tadi_Dj_Ravi_Dhanbad.mp3/file" class="download-btn" onclick="makeRed('s9')">
+			Download
+		</a>
+    </div>
+    <div class="update-item bhojpuri-bhakti-dj">
+        <div class="song-info">
+            <div class="update-icon">MP3</div>
+            <div id="s10" class="song-name">Chunariyaa Lele Aeiha [Fully Dholki Mix] Dj Ravi Dhanbad.mp3</div>
+        </div>
+		<a href="download.html?name=Chunariyaa Lele Aeiha [Fully Dholki Mix] Dj Ravi Dhanbad.mp3&size=6.82MB&cat=Bhojpuri Bhakti Dj Songs&link=https://www.mediafire.com/file/zp0ssuy3xkhvtlc/Sadi_Se_Tadi_Dj_Ravi_Dhanbad.mp3/file" class="download-btn" onclick="makeRed('s10')">
+			Download
+		</a>
+    </div>
+    <div class="update-item bolywood-old-is-gold-dj">
+        <div class="song-info">
+            <div class="update-icon">MP3</div>
+            <div id="s11" class="song-name">Humko Tumse Pyaar Hai [Fully Dholki Mix] Dj Ravi Dhanbad.mp3</div>
+        </div>
+		<a href="download.html?name=Humko Tumse Pyaar Hai [Fully Dholki Mix] Dj Ravi Dhanbad.mp3&size=8.43MB&cat=Bollywood Old Is Gold Dj Songs&link=https://www.mediafire.com/file/3dbrxbfxcjiv6y6/Humko_Tumse_Pyaar_Hai_Dj_Ravi_Dhanbad.mp3/file" class="download-btn" onclick="makeRed('s11')">
+			Download
+		</a>
+    </div>
+
+    <div class="yt-corner-container">
+        <div class="section-title">YouTube Corner's</div>
+        <ul class="yt-list">
+            <li><a href="https://youtube.com/channel/UCUGqN1Qqme1pggHe48rzWcw"><svg class="folder-icon" viewBox="0 0 24 24"><path d="M13,9V3.5L18.5,9M6,2C4.89,2 4,2.89 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2H6Z"/></svg>YouTube Video's</a></li>
+            <li><a href="https://youtube.com/playlist?list=PLxiEAnhwnDSJFIBEUOu-pA1hmXHEg9gJo&si=sR0yiX3dPqrurWhf"><svg class="folder-icon" viewBox="0 0 24 24"><path d="M13,9V3.5L18.5,9M6,2C4.89,2 4,2.89 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2H6Z"/></svg>FLP Project Video's (Bhojpuri)</a></li>
+            <li><a href="https://youtube.com/playlist?list=PLxiEAnhwnDSKx1almS5nZ2kn8pYwaYyHL&si=WAW1PU-FKaoPixEK"><svg class="folder-icon" viewBox="0 0 24 24"><path d="M13,9V3.5L18.5,9M6,2C4.89,2 4,2.89 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2H6Z"/></svg>FLP Project Video's (Hindi)</a></li>
+            <li><a href="https://youtube.com/playlist?list=PLxiEAnhwnDSJVlOlVX_WSxtqc2JBlX-jD&si=wBMK0l145wfA1s3-"><svg class="folder-icon" viewBox="0 0 24 24"><path d="M13,9V3.5L18.5,9M6,2C4.89,2 4,2.89 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2H6Z"/></svg>Upcomming Flp Project Video's</a></li>
+            <li><a href="https://youtube.com/playlist?list=PLxiEAnhwnDSKQ-joeOPXVQov4W0nh6bin&si=YsVD0S-pSMTNcioH"><svg class="folder-icon" viewBox="0 0 24 24"><path d="M13,9V3.5L18.5,9M6,2C4.89,2 4,2.89 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2H6Z"/></svg>DJ Mixing Tutorial Video's</a></li>
+        </ul>
+    </div>
+    <div class="section-title">Exclusive Categorie's</div>
+    <ul class="category-list">
+        <li><a href="Bhojpuri DJ Songs.html"><svg class="folder-icon" viewBox="0 0 24 24"><path d="M10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6H12L10,4Z"/></svg>Bhojpuri DJ Songs</a></li>
+        <li><a href="Bhojpuri Bhakti DJ Songs.html"><svg class="folder-icon" viewBox="0 0 24 24"><path d="M10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6H12L10,4Z"/></svg>Bhojpuri Bhakti DJ Songs</a></li>
+        <li><a href="Hindi DJ Songs.html"><svg class="folder-icon" viewBox="0 0 24 24"><path d="M10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6H12L10,4Z"/></svg>Hindi DJ Songs</a></li>
+        <li><a href="Hindi Bhakti DJ Songs.html"><svg class="folder-icon" viewBox="0 0 24 24"><path d="M10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6H12L10,4Z"/></svg>Hindi Bhakti DJ Songs</a></li>
+        <li><a href="Bollywood Old Is Gold DJ Songs.html"><svg class="folder-icon" viewBox="0 0 24 24"><path d="M10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6H12L10,4Z"/></svg>Bollywood Old Is Gold DJ Songs</a></li>
+        <li><a href="Chhath Puja DJ Songs.html"><svg class="folder-icon" viewBox="0 0 24 24"><path d="M10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6H12L10,4Z"/></svg>Chhath Puja DJ Songs</a></li>
+        <li><a href="Sound Check DJ Songs.html"><svg class="folder-icon" viewBox="0 0 24 24"><path d="M10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6H12L10,4Z"/></svg>Sound Check DJ Songs</a></li>
+        <li><a href="Holi DJ Songs.html"><svg class="folder-icon" viewBox="0 0 24 24"><path d="M10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6H12L10,4Z"/></svg>Holi DJ Songs</a></li>
+    </ul>
+     <footer>
+        <div class="social-icons">
+            <a href="https://youtube.com/channel/UCUGqN1Qqme1pggHe48rzWcw" class="social-icon-link yt"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+            <a href="#" class="social-icon-link fb"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+            <a href="#" class="social-icon-link ig"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+            <a href="https://t.me/drjosongs" class="social-icon-link tg"><svg viewBox="0 0 24 24"><path d="M11.944 0C5.359 0 0 5.359 0 11.944c0 6.585 5.359 11.944 11.944 11.944 6.585 0 11.944-5.359 11.944-11.944C23.888 5.359 18.529 0 11.944 0zm5.831 7.712l-1.921 9.061c-.14.636-.518.794-1.053.493l-2.927-2.157-1.412 1.358c-.156.156-.288.288-.588.288l.209-2.971 5.409-4.888c.235-.209-.051-.325-.363-.117l-6.687 4.21-2.876-.899c-.626-.196-.638-.626.131-.927l11.231-4.327c.518-.196.972.116.848.861z"/></svg></a>
+        </div>
+        <div class="copyright-box">Copyright &copy; 2026 Reserved by DRJO</div>
+        <div class="disclaimer">
+            This website is for promotional purposes only. The audio files are copyrighted to their respective owners.<br>
+            Contact: admin@drjosongs.in
+        </div>
+        <div class="footer-links">
+            <a href="privacy policy.html">Privacy Policy</a>|<a href="DMCA.html">DMCA</a>|<a href="Disclaimer.html">Disclaimer</a>|<a href="Contact Us.html">Contact Us</a>
+        </div>
+    </footer>
+    <script>
+        function makeRed(id) {
+            document.getElementById(id).classList.add('clicked-red');
+        }
+    </script>
+</body>
+</html>

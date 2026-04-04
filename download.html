@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Song - DRJOSONGS.IN</title>
+    <style>
+        /* आपकी मूल स्टाइल यहाँ सुरक्षित है */
+        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f7f6; color: #000000; }
+        header { background-color: #b71c1c; color: #ffffff; padding: 15px; text-align: center; border-bottom: 4px solid #ffffff; display: flex; align-items: center; justify-content: center; gap: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .header-logo { width: 50px; height: 50px; border-radius: 50%; border: 1px solid #fff; object-fit: cover; }
+        header h1 { margin: 0; font-size: 30px; font-weight: 900; letter-spacing: 2px; }
+        .section-title { background-color: #000000; color: #ffffff; padding: 8px 15px; font-size: 13px; font-weight: bold; text-transform: uppercase; }
+        .download-box { background: #ffffff; margin: 15px; padding: 15px; border-radius: 8px; border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        /* --- यहाँ बदलाव किया गया है: आइकन और नाम को बगल में लाने के लिए --- */
+        .song-header-flex {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f4f7f6;
+            padding-bottom: 15px;
+        }
+        .mp3-box-red {
+            background-color: #b71c1c;
+            color: #ffffff;
+            padding: 10px 12px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 4px;
+            text-align: center;
+            min-width: 45px;
+        }
+        .song-display-name {
+            color: #b71c1c;
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 1.4;
+            margin: 0;
+            text-align: left;
+        }
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; text-align: left; font-size: 12px; }
+        .info-item { border-bottom: 1px solid #eee; padding: 5px 0; }
+        .info-label { font-weight: bold; color: #555; }
+       
+        .final-download-btn { display: inline-block; background-color: #2e7d32; color: #ffffff; text-decoration: none; padding: 12px 30px; font-size: 14px; font-weight: bold; border-radius: 5px; border: 1px solid #1b5e20; text-transform: uppercase; box-shadow: 0 3px 0 #1b5e20; }
+        .final-download-btn:active { transform: translateY(2px); box-shadow: none; }
+        
+        footer { background-color: #000000; border-top: 3px solid #b71c1c; color: #888; text-align: center; padding: 15px; margin-top: 30px; }
+        .disclaimer { font-size: 8px; line-height: 1.2; margin-bottom: 10px; }
+        .copyright-box { color: #b71c1c; font-weight: bold; font-size: 14px; margin-bottom: 5px; }
+        .nav-container { text-align: center; margin: 30px 0; padding-bottom: 30px; display: flex; justify-content: center; gap: 12px; }
+        .nav-btn { display: inline-block; padding: 10px 25px; background-color: #000; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 14px; }
+        .home-btn { background-color: #b71c1c; }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="DRJO" class="header-logo">
+        <div><h1>DRJOSONGS.IN</h1><div style="font-size: 9px; letter-spacing: 1px;">Best Destination for MP3 Songs</div></div>
+        <img src="logo.png" alt="DRJO" class="header-logo">
+    </header>
+    <div class="section-title">File Download Detail's</div>
+    <div class="download-box">
+        <div class="song-header-flex">
+            <div class="mp3-box-red">MP3</div>
+            <h2 id="songName" class="song-display-name">Loading Song...</h2>
+        </div>
+       
+        <div class="info-grid">
+            <div class="info-item"><span class="info-label">File Size:</span> <span id="songSize" style="color: #b71c1c; font-weight: bold;">--</span></div>
+            <div class="info-item"><span class="info-label">Total Hits:</span> <span id="songHits" style="color: #b71c1c; font-weight: bold;">--</span></div>
+            <div class="info-item"><span class="info-label">Format:</span> <span style="color: #b71c1c; font-weight: bold;">MP3 (320kbps)</span></div>
+            <div class="info-item"><span class="info-label">Uploader:</span> <span style="color: #b71c1c; font-weight: bold;">Dj Ravi Dhanbad</span></div>
+            <div class="info-item" style="grid-column: span 2;"><span class="info-label">Category:</span> <span id="songCat" style="color: #b71c1c; font-weight: bold;">--</span></div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="#" id="mediafireLink" class="final-download-btn">Click to Download</a>
+        </div>
+    </div>
+    <div class="nav-container">
+        <a href="index.html" class="nav-btn home-btn">Home</a>
+    </div>
+    <footer>
+        <div class="copyright-box">Copyright &copy; 2026 Reserved by DRJO</div>
+        <div class="disclaimer">Promotion purposes only. Contact: admin@drjosongs.in</div>
+    </footer>
+    <script>
+        function loadSongData() {
+            const params = new URLSearchParams(window.location.search);
+            const name = params.get('name') || "Unknown Song";
+            const size = params.get('size') || "7.5 MB";
+            const link = params.get('link') || "https://www.mediafire.com";
+            const cat = params.get('cat') || "Mix DJ Songs";
+            const hits = Math.floor(Math.random() * (2500 - 500 + 1)) + 500;
+            document.getElementById('songName').innerText = decodeURIComponent(name);
+            document.getElementById('songSize').innerText = size;
+            document.getElementById('songHits').innerText = hits + " Downloads";
+            document.getElementById('songCat').innerText = decodeURIComponent(cat);
+            document.getElementById('mediafireLink').href = link;
+        }
+        window.onload = loadSongData;
+    </script>
+</body>
+</html>
