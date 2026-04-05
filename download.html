@@ -124,7 +124,7 @@
             const cat = params.get('cat') || "Mix DJ Songs";
             const hits = Math.floor(Math.random() * (2500 - 500 + 1)) + 500;
             document.getElementById('songName').innerText = decodeURIComponent(name);
-            document.getElementById('songSize').innerText = size;
+            document.getElementById('songSize').innerText = size + " mb";
             document.getElementById('songHits').innerText = hits + " Downloads";
             document.getElementById('songCat').innerText = decodeURIComponent(cat);
             document.getElementById('mediafireLink').href = link;
