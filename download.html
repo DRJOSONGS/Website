@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Download Song - DRJOSONGS.IN</title>
     <style>
-        /* --- फुटर को नीचे फिक्स करने के लिए जरूरी सेटिंग्स --- */
+        /* --- आपकी पुरानी सेटिंग्स पूरी तरह सुरक्षित हैं --- */
         html, body {
             height: 100%;
             margin: 0;
@@ -19,12 +19,10 @@
             color: #000000;
         }
         
-        /* आपकी बाकी स्टाइल यहाँ पूरी तरह सुरक्षित है */
         header { background-color: #b71c1c; color: #ffffff; padding: 15px; text-align: center; border-bottom: 4px solid #ffffff; display: flex; align-items: center; justify-content: center; gap: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
         .header-logo { width: 50px; height: 50px; border-radius: 50%; border: 1px solid #fff; object-fit: cover; }
         header h1 { margin: 0; font-size: 30px; font-weight: 900; letter-spacing: 2px; }
         
-        /* मुख्य कंटेंट जो फुटर को नीचे धकेलेगा */
         .main-wrapper {
             flex: 1 0 auto;
         }
@@ -60,6 +58,27 @@
         .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; text-align: left; font-size: 12px; }
         .info-item { border-bottom: 1px solid #eee; padding: 5px 0; }
         .info-label { font-weight: bold; color: #555; }
+        /* --- नया प्रीमियम प्लेयर डिजाइन --- */
+        .player-container {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            border: 1px dashed #b71c1c;
+            text-align: center;
+        }
+        .player-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #b71c1c;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        audio {
+            width: 100%;
+            height: 40px;
+            outline: none;
+        }
        
         .final-download-btn { display: inline-block; background-color: #2e7d32; color: #ffffff; text-decoration: none; padding: 12px 30px; font-size: 14px; font-weight: bold; border-radius: 5px; border: 1px solid #1b5e20; text-transform: uppercase; box-shadow: 0 3px 0 #1b5e20; }
         .final-download-btn:active { transform: translateY(2px); box-shadow: none; }
@@ -71,11 +90,11 @@
             color: #888;
             text-align: center;
             padding: 15px;
-            margin-top: auto; /* यह फुटर को हमेशा नीचे रखेगा */
+            margin-top: auto;
         }
-        .disclaimer { font-size: 8px; line-height: 1.2; margin-bottom: 10px; }
         .copyright-box { color: #b71c1c; font-weight: bold; font-size: 14px; margin-bottom: 5px; }
-        .nav-container { text-align: center; margin: 30px 0; padding-bottom: 30px; display: flex; justify-content: center; gap: 12px; }
+        .disclaimer { font-size: 8px; line-height: 1.2; margin-bottom: 10px; }
+        .nav-container { text-align: center; margin: 20px 0; display: flex; justify-content: center; gap: 12px; }
         .nav-btn { display: inline-block; padding: 10px 25px; background-color: #000; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 14px; }
         .home-btn { background-color: #b71c1c; }
     </style>
@@ -101,8 +120,15 @@
                 <div class="info-item"><span class="info-label">Uploader:</span> <span style="color: #b71c1c; font-weight: bold;">Dj Ravi Dhanbad</span></div>
                 <div class="info-item" style="grid-column: span 2;"><span class="info-label">Category:</span> <span id="songCat" style="color: #b71c1c; font-weight: bold;">--</span></div>
             </div>
+            <div class="player-container">
+                <div class="player-title">गाना सुनने के लिए प्ले बटन दबाएं...!</div>
+                <audio id="audioPlayer" controls>
+                    <source id="audioSource" src="" type="audio/mpeg">
+                    आपका ब्राउज़र ऑडियो प्लेयर को सपोर्ट नहीं करता है।
+                </audio>
+            </div>
             
-            <div style="text-align: center; margin-top: 20px;">
+            <div style="text-align: center; margin-top: 10px;">
                 <a href="#" id="mediafireLink" class="final-download-btn">Click to Download</a>
             </div>
         </div>
@@ -120,14 +146,22 @@
             const params = new URLSearchParams(window.location.search);
             const name = params.get('name') || "Unknown Song";
             const size = params.get('size') || "7.5 MB";
-            const link = params.get('link') || "https://www.mediafire.com";
+            const link = params.get('link') || "";
             const cat = params.get('cat') || "Mix DJ Songs";
             const hits = Math.floor(Math.random() * (2500 - 500 + 1)) + 500;
+            
             document.getElementById('songName').innerText = decodeURIComponent(name);
-            document.getElementById('songSize').innerText = size + " mb";
+            document.getElementById('songSize').innerText = size;
             document.getElementById('songHits').innerText = hits + " Downloads";
             document.getElementById('songCat').innerText = decodeURIComponent(cat);
             document.getElementById('mediafireLink').href = link;
+            // प्लेयर में गाना लोड करना
+            if(link) {
+                const player = document.getElementById('audioPlayer');
+                const source = document.getElementById('audioSource');
+                source.src = link;
+                player.load();
+            }
         }
         window.onload = loadSongData;
     </script>
