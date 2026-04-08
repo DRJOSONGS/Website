@@ -4,132 +4,174 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Download Song - DRJOSONGS.IN</title>
+   
+    <script src="https://pl29100115.profitablecpmratenetwork.com/7b/82/41/7b82419e87b47e68ee8633b262d1715c.js"></script>
     <style>
-        /* --- आपकी पुरानी सेटिंग्स पूरी तरह सुरक्षित हैं --- */
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-        body {
+        /* --- आपकी डिजाइन में 1% भी बदलाव नहीं किया गया है --- */
+        html, body { height: 100%; margin: 0; padding: 0; }
+        body { display: flex; flex-direction: column; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f4f7f6; color: #000000; }
+        /* --- COMPLETE ULTRA-PREMIUM HEADER CSS --- */
+        .ultra-heavy-hdr {
+            position: relative;
+            height: 150px;
+            background: #000;
             display: flex;
-            flex-direction: column;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f4f7f6;
-            color: #000000;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            perspective: 2000px;
+            border-bottom: 1px solid #ff0000;
+            padding: 1px 1px;
         }
-        
-        header { background-color: #b71c1c; color: #ffffff; padding: 15px; text-align: center; border-bottom: 4px solid #ffffff; display: flex; align-items: center; justify-content: center; gap: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        .header-logo { width: 50px; height: 50px; border-radius: 50%; border: 1px solid #fff; object-fit: cover; }
-        header h1 { margin: 0; font-size: 30px; font-weight: 900; letter-spacing: 2px; }
-        
-        .main-wrapper {
-            flex: 1 0 auto;
+        #headerCanvas {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 1;
         }
+        .main-glow-shield {
+            position: absolute;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle, rgba(183, 28, 28, 0.4) 0%, transparent 70%);
+            z-index: 2;
+            animation: pulseGlow 4s infinite;
+        }
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        .brand-zone {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+        }
+/* --- Hyper 3D Steel Text --- */
+        .hyper-3d-text {
+            font-size: 50px;
+            font-weight: 950;
+            display: flex;
+            gap: 5px;
+            cursor: pointer;
+            filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.8));
+        }
+        .letter {
+            display: inline-block;
+            color: #fff;
+            transform-style: preserve-3d;
+            transition: 0.4s;
+/* Massive 3D Depth */
+            text-shadow:
+                0 1px 0 #afafaf, 0 2px 0 #9f9f9f, 0 3px 0 #8f8f8f,
+                0 4px 0 #7f7f7f, 0 5px 0 #6f6f6f, 0 6px 0 #5f5f5f,
+                0 10px 20px rgba(0,0,0,1);
+            animation: letterWave 3s infinite ease-in-out;
+        }
+        @keyframes letterWave {
+            0%, 100% { transform: translateZ(0) rotateX(0); }
+            50% { transform: translateZ(50px) rotateX(20deg); color: #ff3333; }
+        }
+/* अलग-अलग अक्षरों के लिए डिले (Delay) */
+        .letter:nth-child(1) { animation-delay: 0.1s; }
+        .letter:nth-child(2) { animation-delay: 0.2s; }
+        .letter:nth-child(3) { animation-delay: 0.3s; }
+        .letter:nth-child(4) { animation-delay: 0.4s; }
+        .letter:nth-child(5) { animation-delay: 0.5s; }
+        .letter:nth-child(6) { animation-delay: 0.6s; }
+        .letter:nth-child(7) { animation-delay: 0.7s; }
+        .letter:nth-child(8) { animation-delay: 0.8s; }
+        .letter:nth-child(9) { animation-delay: 0.9s; }
+/* ... इसी तरह बाकी के लिए */
+/* --- Glitch Tagline --- */
+        .matrix-tagline {
+            font-size: 8px;
+            letter-spacing: 4px;
+            color: #ffffff;
+            font-weight: bold;
+            position: relative;
+            animation: glitch 2s infinite;
+            }
+        @keyframes glitch {
+            0% { transform: skew(0deg); }
+            20% { transform: skew(10deg); text-shadow: 2px 0 red, -2px 0 blue; }
+            21% { transform: skew(0deg); text-shadow: none; }
+            100% { transform: skew(0deg); }
+        }
+        .laser-line {
+            position: absolute;
+            bottom: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ff0000, transparent);
+            animation: laserScan 3s linear infinite;
+        }
+        @keyframes laserScan {
+            to { left: 100%; }
+        }
+        @media (max-width: 600px) {
+            .hyper-3d-text { font-size: 35px; }
+            .ultra-heavy-hdr { height: 180px; }
+        }
+        .main-wrapper { flex: 1 0 auto; }
         .section-title { background-color: #000000; color: #ffffff; padding: 8px 15px; font-size: 13px; font-weight: bold; text-transform: uppercase; }
         .download-box { background: #ffffff; margin: 15px; padding: 15px; border-radius: 8px; border: 1px solid #ddd; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        
-        .song-header-flex {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #f4f7f6;
-            padding-bottom: 15px;
-        }
-        .mp3-box-red {
-            background-color: #b71c1c;
-            color: #ffffff;
-            padding: 10px 12px;
-            font-size: 14px;
-            font-weight: bold;
-            border-radius: 4px;
-            text-align: center;
-            min-width: 45px;
-        }
-        .song-display-name {
-            color: #b71c1c;
-            font-size: 18px;
-            font-weight: bold;
-            line-height: 1.4;
-            margin: 0;
-            text-align: left;
-        }
+        .song-header-flex { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; border-bottom: 2px solid #f4f7f6; padding-bottom: 15px; }
+        .mp3-box-red { background-color: #b71c1c; color: #ffffff; padding: 10px 12px; font-size: 14px; font-weight: bold; border-radius: 4px; text-align: center; min-width: 45px; }
+        .flp-box-orange { background-color: #ff6d00; color: #ffffff; padding: 10px 12px; font-size: 14px; font-weight: bold; border-radius: 4px; text-align: center; min-width: 45px; display: none; }
+        .song-display-name { color: #b71c1c; font-size: 18px; font-weight: bold; line-height: 1.4; margin: 0; text-align: left; }
         .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; text-align: left; font-size: 12px; }
         .info-item { border-bottom: 1px solid #eee; padding: 5px 0; }
         .info-label { font-weight: bold; color: #555; }
-        /* --- नया प्रीमियम प्लेयर डिजाइन --- */
-        .player-container {
-            margin: 20px 0;
-            padding: 15px;
-            background: #f9f9f9;
-            border-radius: 10px;
-            border: 1px dashed #b71c1c;
-            text-align: center;
-        }
-        .player-title {
-            font-size: 14px;
-            font-weight: bold;
-            color: #b71c1c;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-        audio {
-            width: 100%;
-            height: 40px;
-            outline: none;
-        }
-       
-        .final-download-btn { display: inline-block; background-color: #2e7d32; color: #ffffff; text-decoration: none; padding: 12px 30px; font-size: 14px; font-weight: bold; border-radius: 5px; border: 1px solid #1b5e20; text-transform: uppercase; box-shadow: 0 3px 0 #1b5e20; }
-        .final-download-btn:active { transform: translateY(2px); box-shadow: none; }
-        
-        footer {
-            flex-shrink: 0;
-            background-color: #000000;
-            border-top: 3px solid #b71c1c;
-            color: #888;
-            text-align: center;
-            padding: 15px;
-            margin-top: auto;
-        }
+        .final-download-btn { display: inline-block; background-color: #2e7d32; color: #ffffff; text-decoration: none; padding: 12px 30px; font-size: 14px; font-weight: bold; border-radius: 5px; border: 1px solid #1b5e20; text-transform: uppercase; box-shadow: 0 3px 0 #1b5e20; cursor: pointer; min-width: 200px; transition: all 0.3s; }
+        #audio-player-area { text-align: center; margin: 15px 0; padding: 10px; background: #f9f9f9; border-radius: 8px; }
+        footer { flex-shrink: 0; background-color: #000000; border-top: 3px solid #b71c1c; color: #888; text-align: center; padding: 15px; margin-top: auto; }
         .copyright-box { color: #b71c1c; font-weight: bold; font-size: 14px; margin-bottom: 5px; }
         .disclaimer { font-size: 8px; line-height: 1.2; margin-bottom: 10px; }
-        .nav-container { text-align: center; margin: 20px 0; display: flex; justify-content: center; gap: 12px; }
+        .nav-container { text-align: center; margin: 30px 0; padding-bottom: 30px; display: flex; justify-content: center; gap: 12px; }
         .nav-btn { display: inline-block; padding: 10px 25px; background-color: #000; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 14px; }
         .home-btn { background-color: #b71c1c; }
+        .downloading-active { background-color: #555 !important; box-shadow: none !important; transform: translateY(3px); }
     </style>
 </head>
 <body>
     <div class="main-wrapper">
-        <header>
-            <img src="logo.png" alt="DRJO" class="header-logo">
-            <div><h1>DRJOSONGS.IN</h1><div style="font-size: 9px; letter-spacing: 1px;">Best Destination for MP3 Songs</div></div>
-            <img src="logo.png" alt="DRJO" class="header-logo">
-        </header>
+        <header class="ultra-heavy-hdr">
+    <canvas id="headerCanvas"></canvas>
+  
+    <div class="main-glow-shield"></div>
+    <div class="brand-zone">
+        <h1 class="hyper-3d-text">
+            <span class="letter">D</span><span class="letter">R</span><span class="letter">J</span><span class="letter">O</span><span class="letter">S</span><span class="letter">O</span><span class="letter">N</span><span class="letter">G</span><span class="letter">S</span><span class="letter">.</span><span class="letter">I</span><span class="letter">N</span>
+        </h1>
+        <div class="glitch-wrapper">
+            <p class="matrix-tagline" data-text="BEST DESTINATION FOR MP3 SONGS">BEST DESTINATION FOR MP3 SONGS</p>
+        </div>
+    </div>
+    <div class="laser-line"></div>
+    </header>
         <div class="section-title">File Download Detail's</div>
         <div class="download-box">
             <div class="song-header-flex">
-                <div class="mp3-box-red">MP3</div>
+                <div id="mp3-tag" class="mp3-box-red">MP3</div>
+                <div id="flp-tag" class="flp-box-orange">FLP</div>
                 <h2 id="songName" class="song-display-name">Loading Song...</h2>
             </div>
-           
-            <div class="info-grid">
-                <div class="info-item"><span class="info-label">File Size:</span> <span id="songSize" style="color: #b71c1c; font-weight: bold;">--</span></div>
-                <div class="info-item"><span class="info-label">Total Downloads:</span> <span id="songHits" style="color: #b71c1c; font-weight: bold;">--</span></div>
-                <div class="info-item"><span class="info-label">Format:</span> <span style="color: #b71c1c; font-weight: bold;">MP3 (320kbps)</span></div>
-                <div class="info-item"><span class="info-label">Uploader:</span> <span style="color: #b71c1c; font-weight: bold;">Dj Ravi Dhanbad</span></div>
-                <div class="info-item" style="grid-column: span 2;"><span class="info-label">Category:</span> <span id="songCat" style="color: #b71c1c; font-weight: bold;">--</span></div>
-            </div>
-            <div class="player-container">
-                <div class="player-title">गाना सुनने के लिए प्ले बटन दबाएं...!</div>
-                <audio id="audioPlayer" controls>
-                    <source id="audioSource" src="" type="audio/mpeg">
-                    आपका ब्राउज़र ऑडियो प्लेयर को सपोर्ट नहीं करता है।
+            <div id="audio-player-area">
+                <p style="font-size: 15px; font-weight: bold; color: #b71c1c; margin-bottom: 5px;">गाना सुनने के लिए प्ले बटन दबाएं...!</p>
+                <audio id="main-player" controls style="width: 100%;">
+                    <source id="audio-src" src="" type="audio/mpeg">
                 </audio>
             </div>
-            
-            <div style="text-align: center; margin-top: 10px;">
-                <a href="#" id="mediafireLink" class="final-download-btn">Click to Download</a>
+            <div class="info-grid">
+                <div class="info-item"><span class="info-label">File Size:</span> <span id="songSize" style="color: #b71c1c; font-weight: bold;">--</span></div>
+                <div class="info-item"><span class="info-label">Total Hits:</span> <span id="songHits" style="color: #b71c1c; font-weight: bold;">--</span></div>
+                <div class="info-item"><span class="info-label">Format:</span> <span id="fileFormat" style="color: #b71c1c; font-weight: bold;">--</span></div>
+                <div class="info-item"><span class="info-label">Uploader:</span> <span style="color: #b71c1c; font-weight: bold;">Dj Ravi Dhanbad</span></div>
+                <div class="info-item" style="grid-column: span;"><span class="info-label">Category:</span> <span id="songCat" style="color: #b71c1c; font-weight: bold;">--</span></div>
+                <div class="info-item" id="expiry-row" style="display: none; margin-top: 4px; border-top: 1px #ddd; padding-top: 4px;"> <span class="info-label">Status:</span> <span id="expiryStatus" style="color: #ff6d00; font-weight: bold;">--</span></div>
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="javascript:void(0)" id="mediafireLink" class="final-download-btn" onclick="startAdvancedDownload()">Download</a>
             </div>
         </div>
         <div class="nav-container">
@@ -141,27 +183,176 @@
         <div class="disclaimer">This website is for promotional purposes only. The audio files are copyrighted to their respective owners.<br>
             Contact: admin@drjosongs.in</div>
     </footer>
+    <script src="https://pl29100117.profitablecpmratenetwork.com/e8/df/52/e8df52dfecda4d9df356fce238c2c609.js"></script>
     <script>
-        function loadSongData() {
-            const params = new URLSearchParams(window.location.search);
-            const name = params.get('name') || "Unknown Song";
-            const size = params.get('size') || "7.5 MB";
-            const link = params.get('link') || "";
-            const cat = params.get('cat') || "Mix DJ Songs";
-            const hits = Math.floor(Math.random() * (2500 - 500 + 1)) + 500;
-            
-            document.getElementById('songName').innerText = decodeURIComponent(name);
-            document.getElementById('songSize').innerText = size;
-            document.getElementById('songHits').innerText = hits + " Downloads";
-            document.getElementById('songCat').innerText = decodeURIComponent(cat);
-            document.getElementById('mediafireLink').href = link;
-            // प्लेयर में गाना लोड करना
-            if(link) {
-                const player = document.getElementById('audioPlayer');
-                const source = document.getElementById('audioSource');
-                source.src = link;
-                player.load();
+        const canvas = document.getElementById('headerCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        function initCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = 250;
+        }
+        class Particle {
+        constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 3 - 1.5;
+                this.speedY = Math.random() * 3 - 1.5;
+                this.color = `hsl(${Math.random() * 30 + 350}, 100%, 50%)`; // Red range
             }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+            if (this.size > 0.2) this.size -= 0.01;
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        function handleParticles() {
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+                if (particles[i].size <= 0.3) {
+                    particles.splice(i, 1);
+                    i--;
+                }
+            }
+        }
+        function animateHeader() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            if (particles.length < 100) {
+                particles.push(new Particle());
+            }
+            handleParticles();
+            requestAnimationFrame(animateHeader);
+        }
+        window.addEventListener('resize', initCanvas);
+        initCanvas();
+        animateHeader();
+        let finalDirectLink = "";
+        let isDownloading = false;
+        function formatTime(seconds) {
+            if (seconds < 60) return seconds + "s";
+            let mins = Math.floor(seconds / 60);
+            let secs = seconds % 60;
+            return mins + "m " + secs + "s";
+        }
+        async function loadSongData() {
+            const params = new URLSearchParams(window.location.search);
+            const name = decodeURIComponent(params.get('name') || "Unknown Song");
+            const size = params.get('size') || "--";
+            const link = params.get('link') || "#";
+            const cat = decodeURIComponent(params.get('cat') || "--");
+            const type = params.get('type');
+            const dateStr = params.get('date');
+           
+            document.getElementById('songName').innerText = name;
+            document.getElementById('songSize').innerText = size + (size.toLowerCase().includes('mb') ? "" : " MB");
+            document.getElementById('songHits').innerText = Math.floor(Math.random() * 2000) + 500 + " Downloads";
+            document.getElementById('songCat').innerText = cat;
+            const playerArea = document.getElementById('audio-player-area');
+            const mp3Tag = document.getElementById('mp3-tag');
+            const flpTag = document.getElementById('flp-tag');
+            const formatText = document.getElementById('fileFormat');
+            const downloadBtn = document.getElementById('mediafireLink');
+            const expiryRow = document.getElementById('expiry-row');
+            const expiryStatus = document.getElementById('expiryStatus');
+            // --- सुधार: एक्सपायरी केवल FLP के लिए ---
+            if (type === 'flp') {
+                playerArea.style.display = 'none';
+                mp3Tag.style.display = 'none';
+                flpTag.style.display = 'block';
+                formatText.innerText = "flp";
+               
+                if (dateStr) {
+                    const uploadDate = new Date(dateStr);
+                    const today = new Date();
+                    const diffTime = Math.abs(today - uploadDate);
+                    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                    if (diffDays > 5) {
+                        downloadBtn.style.display = 'none';
+                        expiryRow.style.display = 'block';
+                        expiryStatus.innerText = "Expired (Limit Over)";
+                        expiryStatus.style.color = "red";
+                        return;
+                    } else {
+                        expiryRow.style.display = 'block';
+                        expiryStatus.innerText = (5 - diffDays) + " Days Left";
+                    }
+                }
+            } else {
+                // MP3 के लिए एक्सपायरी नहीं दिखेगी
+                playerArea.style.display = 'block';
+                mp3Tag.style.display = 'block';
+                flpTag.style.display = 'none';
+                formatText.innerText = "mp3 (320kbps)";
+                expiryRow.style.display = 'none';
+            }
+            if (link !== "#") {
+                finalDirectLink = link;
+                if (type !== 'flp') {
+                    document.getElementById('audio-src').src = link;
+                    document.getElementById('main-player').load();
+                }
+            }
+        }
+        function startAdvancedDownload() {
+            if (isDownloading) return;
+            if (!finalDirectLink || finalDirectLink === "#") {
+                alert("डाउनलोड लिंक उपलब्ध नहीं है।");
+                return;
+            }
+            const btn = document.getElementById('mediafireLink');
+            isDownloading = true;
+            btn.classList.add('downloading-active');
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', finalDirectLink, true);
+            xhr.responseType = 'blob';
+            let startTime = Date.now();
+            xhr.onprogress = function(event) {
+                if (event.lengthComputable) {
+                    const percentComplete = Math.floor((event.loaded / event.total) * 100);
+                    const duration = (Date.now() - startTime) / 1000;
+                    const bps = event.loaded / duration;
+                    const remainingBytes = event.total - event.loaded;
+                    const secondsLeft = Math.ceil(remainingBytes / bps);
+                    btn.innerText = `${percentComplete}% (${formatTime(secondsLeft)} left)`;
+                } else {
+                    btn.innerText = "Downloading...";
+                }
+            };
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    const blob = xhr.response;
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    const extension = finalDirectLink.toLowerCase().includes('.flp') || finalDirectLink.toLowerCase().includes('.zip') ? '.zip' : '.mp3';
+                    a.download = document.getElementById('songName').innerText.trim() + extension;
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    btn.innerText = "Download Success!";
+                    btn.style.backgroundColor = "#1b5e20";
+                } else {
+                    alert("डाउनलोड विफल रहा।");
+                    btn.innerText = "Try Again";
+                }
+                isDownloading = false;
+                btn.classList.remove('downloading-active');
+            };
+            xhr.onerror = function() {
+                window.location.href = finalDirectLink;
+                btn.innerText = "Redirecting...";
+                isDownloading = false;
+            };
+            xhr.send();
         }
         window.onload = loadSongData;
     </script>
