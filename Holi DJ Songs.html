@@ -5,65 +5,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Holi DJ Songs - DRJOSONGS.IN</title>
     <style>
-        /* --- बेसिक सेटिंग (फुटर को नीचे रखने के लिए) --- */
-        html, body {
-            height: 100%;
-            margin: 0;
-        }
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #f4f7f6;
-            color: #000;
+        /* --- बेसिक सेटिंग --- */
+        html, body { height: 100%; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6; color: #000; display: flex; flex-direction: column; }
+        .main-content { flex: 1 0 auto; }
+        /* --- INDEX जैसा प्रीमियम रेस्पॉन्सिव हेडर --- */
+        .ultra-heavy-hdr {
+            position: relative;
+            background: #000;
             display: flex;
-            flex-direction: column; /* बॉडी को फ्लेक्स बनाया */
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            perspective: 2000px;
+            border-bottom: 2px solid #ff0000;
+            padding: 5px 1px;
+            width: 100%;
         }
-      
-        /* यह हिस्सा बीच की खाली जगह को भर देगा */
-        .main-content {
-            flex: 1 0 auto;
+        @media (min-width: 1025px) { .ultra-heavy-hdr { height: 155px; } .hyper-3d-text { font-size: 55px; } }
+        @media (max-width: 600px) { .ultra-heavy-hdr { height: 100px; } .hyper-3d-text { font-size: 30px; gap: 2px; } .matrix-tagline { font-size: 9px; letter-spacing: 2px; } }
+        #headerCanvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .main-glow-shield {
+            position: absolute; width: 100%; height: 100%;
+            background: radial-gradient(circle, rgba(183, 28, 28, 0.4) 0%, transparent 70%);
+            z-index: 2; animation: pulseGlow 4s infinite;
         }
-        /* --- हेडर: मुख्य ब्रांड नाम और सब-हेडर --- */
-        header { background-color: #b71c1c; color: white; padding: 15px; text-align: center; border-bottom: 4px solid #fff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        header h1 { margin: 0; font-size: 30px; font-weight: 900; letter-spacing: 1px; }
-        .sub-header { font-size: 13px; background: rgba(0,0,0,0.2); padding: 4px 15px; border-radius: 15px; display: inline-block; margin-top: 5px; font-weight: 600; text-transform: uppercase; }
-       
-        /* --- सेक्शन टाइटल --- */
+        @keyframes pulseGlow { 0%, 100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 1; transform: scale(1.2); } }
+        .brand-zone { position: relative; z-index: 10; text-align: center; }
+        .hyper-3d-text { position: relative; font-weight: 950; display: flex; gap: 5px; color: #fff; filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.6)); }
+        /* प्रीमियम रिफ्लेक्शन */
+        .hyper-3d-text::after {
+            content: attr(data-text); position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+            background: linear-gradient(115deg, transparent 45%, rgba(255, 255, 255, 0.6) 50%, transparent 55%);
+            background-size: 250% 100%; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            animation: glassShine 10s cubic-bezier(0.15, 0, 0.15, 1) infinite; z-index: 11; pointer-events: none;
+        }
+        @keyframes glassShine { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+        .letter { display: inline-block; transform-style: preserve-3d; text-shadow: 0 1px 0 #afafaf, 0 4px 6px rgba(0,0,0,0.8); animation: letterWave 3s infinite ease-in-out; }
+        @keyframes letterWave { 0%, 100% { transform: translateZ(0); } 50% { transform: translateZ(15px); color: #ff3333; } }
+        /* गोल्डन क्रांतिकारी टैगलाइन */
+        .matrix-tagline { font-size: 10px; letter-spacing: 2px; color: #ffd700; font-weight: bold; text-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
+        .laser-line { position: absolute; bottom: 0; left: -100%; width: 100%; height: 1px; background: #ff0000; animation: laserScan 5s linear infinite; }
+        @keyframes laserScan { to { left: 100%; } }
+        /* --- मारकी और सेक्शन टाइटल --- */
+        .news-ticker { background: #b71c1c; color: #fff; padding: 4px 0; font-size: 11px; font-weight: bold; border-bottom: 1px solid #000; }
         .section-title { background-color: #000; color: #fff; padding: 10px 15px; font-size: 13px; font-weight: bold; text-transform: uppercase; }
-       
-        /* --- सॉन्ग लिस्टिंग डिजाइन --- */
+        /* --- आपकी ओरिजिनल स्टाइलिंग (सुरक्षित) --- */
         .song-item { background: #fff; padding: 12px; border-bottom: 1px solid #eee; display: flex; align-items: center; justify-content: space-between; text-decoration: none; }
         .mp3-icon { width: 35px; height: 35px; background-color: #b71c1c; color: white; display: flex; justify-content: center; align-items: center; border-radius: 3px; margin-right: 12px; font-size: 10px; font-weight: bold; }
         .song-info { display: flex; align-items: center; text-decoration: none; color: #b71c1c; font-weight: 600; font-size: 14px; }
         .download-btn { background-color: #2e7d32; color: white; text-decoration: none; padding: 7px 15px; font-size: 12px; border-radius: 4px; font-weight: bold; border: 1px solid #1b5e20; }
-       
-        /* --- नेविगेशन बटन --- */
         .nav-container { text-align: center; margin: 30px 0; display: flex; justify-content: center; gap: 12px; }
         .nav-btn { display: inline-block; padding: 10px 25px; background-color: #000; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 14px; }
         .home-btn { background-color: #b71c1c; }
-       
-        /* --- फुटर (हमेशा नीचे रहेगा) --- */
-        footer {
-            flex-shrink: 0;
-            background-color: #000;
-            color: #888;
-            text-align: center;
-            padding: 25px;
-            font-size: 12px;
-            border-top: 3px solid #b71c1c;
-        }
-        /* मोबाइल रिस्पॉन्सिव */
-        @media (max-width: 600px) {
-            header h1 { font-size: 20px; }
-            .song-info { font-size: 12px; }
-        }
+        footer { flex-shrink: 0; background-color: #000; color: #888; text-align: center; padding: 25px; font-size: 12px; border-top: 3px solid #b71c1c; }
     </style>
 </head>
 <body>
     <div class="main-content">
-        <header>
-            <h1>DRJOSONGS.IN</h1>
-            <div class="sub-header">Holi DJ Song's</div>
+        <header class="ultra-heavy-hdr">
+            <canvas id="headerCanvas"></canvas>
+            <div class="main-glow-shield"></div>
+            <div class="brand-zone">
+                <h1 class="hyper-3d-text" data-text="DRJOSONGS.IN">
+                    <span class="letter">D</span><span class="letter">R</span><span class="letter">J</span><span class="letter">O</span><span class="letter">S</span><span class="letter">O</span><span class="letter">N</span><span class="letter">G</span><span class="letter">S</span><span class="letter">.</span><span class="letter">I</span><span class="letter">N</span>
+                </h1>
+                <p class="matrix-tagline">CATEGORY: HOLI DJ SONGS</p>
+            </div>
+            <div class="laser-line"></div>
         </header>
+        <div class="news-ticker">
+            <marquee scrollamount="5">हैप्पी होली! यहाँ आपको मिलेंगे भोजपुरी और हिंदी के सबसे धमाकेदार होली DJ रिमिक्स गाने!</marquee>
+        </div>
+        <div style="width: 100%; text-align: center; background: #fff;">
+            <script src="https://pl29100117.profitablecpmratenetwork.com/e8/df/52/e8df52dfecda4d9df356fce238c2c609.js"></script>
+        </div>
         <div class="section-title">Latest Track's:</div>
         <div class="nav-container">
             <a href="index.html" class="nav-btn home-btn">Home</a>
@@ -75,29 +91,48 @@
         <div>Copyright © 2026 Reserved by DRJO</div>
     </footer>
     <script>
+    // --- एनीमेशन स्क्रिप्ट ---
+    const canvas = document.getElementById('headerCanvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    function initCanvas() { canvas.width = window.innerWidth; canvas.height = (window.innerWidth < 600) ? 100 : 155; }
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 1.5 + 0.5; this.speedX = Math.random() * 2 - 1;
+            this.speedY = Math.random() * 2 - 1; this.color = `hsl(${Math.random() * 30 + 350}, 100%, 50%)`;
+        }
+        update() { this.x += this.speedX; this.y += this.speedY; if (this.size > 0.1) this.size -= 0.008; }
+        draw() { ctx.fillStyle = this.color; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); }
+    }
+    function animateHeader() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        if (particles.length < 55) particles.push(new Particle());
+        for (let i = 0; i < particles.length; i++) {
+            particles[i].update(); particles[i].draw();
+            if (particles[i].size <= 0.2) { particles.splice(i, 1); i--; }
+        }
+        requestAnimationFrame(animateHeader);
+    }
+    window.addEventListener('resize', initCanvas);
+    initCanvas(); animateHeader();
+    // --- ओरिजिनल गानों को लोड करने वाला फंक्शन (सुरक्षित) ---
     async function loadAutoSongs() {
         try {
             const response = await fetch('index.html');
             const html = await response.text();
             const parser = new DOMParser();
             const doc = parser.parseFromString(html, 'text/html');
-            // यहाँ 'holi-dj' क्लास वाले गानों को खोजा जा रहा है
             const newSongs = doc.querySelectorAll('.update-item.holi-dj');
-          
             const listArea = document.querySelector('.section-title');
             newSongs.forEach(song => {
                 const cleanSong = song.cloneNode(true);
                 cleanSong.className = 'song-item';
                 const icon = cleanSong.querySelector('.update-icon');
-                if(icon) {
-                    icon.className = 'mp3-icon';
-                    icon.innerText = 'MP3';
-                }
+                if(icon) { icon.className = 'mp3-icon'; icon.innerText = 'MP3'; }
                 listArea.after(cleanSong);
             });
-        } catch (e) {
-            console.log("System Ready...");
-        }
+        } catch (e) { console.log("System Ready..."); }
     }
     window.onload = loadAutoSongs;
     </script>

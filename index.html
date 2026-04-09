@@ -24,16 +24,27 @@
 /* --- Ultra-Premium Glass Master CSS --- */
         .ultra-heavy-hdr {
             position: relative;
-            height: 140px;
             background: #000;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             overflow: hidden;
             perspective: 2000px;
             border-bottom: 1px solid #ff0000;
             padding: 5px 1px;
+            width: 100%;
+            flex-direction: column;
+        }
+/* कंप्यूटर (Desktop) के लिए */
+        @media (min-width: 1025px) {
+            .ultra-heavy-hdr { height: 155px; } /* कंप्यूटर पर बड़ा */
+            .hyper-3d-text { font-size: 55px; }
+        }
+/* मोबाइल (Mobile) के लिए */
+        @media (max-width: 600px) {
+            .ultra-heavy-hdr { height: 100px; } /* मोबाइल पर छोटा/पतला */
+            .hyper-3d-text { font-size: 30px; gap: 2px; }
+            .matrix-tagline { font-size: 8px; letter-spacing: 2px; }
         }
         #headerCanvas {
             position: absolute;
@@ -385,7 +396,7 @@
         </div>
     </div>
     <div class="laser-line"></div>
-    </header>
+</header>
  
     <div class="search-area">
         <input type="text" placeholder="गाना खोजें ...">
@@ -396,10 +407,10 @@
     </div>
     <div class="section-title">Latest Update's</div>
     <div class="update-item flp-project">
-    <div class="flp-pro">
-        <div class="update-icon flp-icon">FLP</div>
-        <div id="f101" class="song-name">Dewara Dhodhi Chatna [FLP Project].zip</div>
-    </div>
+        <div class="flp-pro">
+            <div class="update-icon flp-icon">FLP</div>
+            <div id="f101" class="song-name">Dewara Dhodhi Chatna [FLP Project].zip</div>
+        </div>
         <a href="download.html?name=Dewara Dhodhi Chatna [FLP Project].zip&size=6.82MB&cat=Flp Projects&type=flp&date=2026-04-07&link=https://archive.org/download/dewara-dhodhi-chatana-ba-music/Dewara%20Dhodhi%20Chatana%20Ba%20music.mp3" class="download-btn ad-trigger" data-id="f101">
             Download
         </a>
@@ -563,7 +574,36 @@
         </div>
     </footer>
     <script>
-        // --- 1. ओरिजिनल हेडर एनीमेशन कोड ---
+
+    // index.html के लिए 20 गानों की लिमिट वाला कोड
+            window.addEventListener('DOMContentLoaded', () => {
+    // यहाँ 'update-item' आपके गानों की क्लास है
+            const updates = document.querySelectorAll('.update-item');
+   
+            updates.forEach((item, index) => {
+    // अगर गाने की संख्या 20 से ज्यादा (index 19 के बाद) है
+            if (index >= 20) {
+                item.style.display = 'none'; // उसे इंडेक्स से छिपा दो
+            }
+        });
+    });
+
+
+    // --- 1. ओरिजिनल हेडर एनीमेशन कोड ---
+        function initCanvas() {
+            canvas.width = window.innerWidth;
+    
+    // यह हिस्सा मोबाइल पर खुद हाइट कम कर देगा
+            if (window.innerWidth < 600) {
+                canvas.height = 100;
+            } else {
+                canvas.height = 155;
+            }
+        }
+    // Particle क्लास के अंदर size को इतना रखें (बारीक सितारों के लिए)
+            this.size = Math.random() * 1.5 + 0.5;
+
+
         const canvas = document.getElementById('headerCanvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -613,11 +653,11 @@
         window.addEventListener('resize', initCanvas);
         initCanvas();
         animateHeader();
-        // --- 2. ओरिजिनल क्लिक फंक्शन ---
+    // --- 2. ओरिजिनल क्लिक फंक्शन ---
         function makeRed(id) {
             document.getElementById(id).classList.add('clicked-red');
         }
-        // --- 3. ओरिजिनल सिंकिंग कोड ---
+    // --- 3. ओरिजिनल सिंकिंग कोड ---
         function syncFLPs() {
             const flpUpdates = document.querySelectorAll('.update-item.flp-project');
             const flpList = document.getElementById('flp-auto-category');
@@ -631,7 +671,7 @@
                 });
             }
         }
-        // --- 4. नयी "कमाई वाली" स्मार्ट स्क्रिप्ट (जो आपने माँगी थी) ---
+    // --- 4. नयी "कमाई वाली" स्मार्ट स्क्रिप्ट (जो आपने माँगी थी) ---
         const SMARTLINK = "https://www.profitablecpmrate.com/vi71qre9ca?key=a0777bfc5f4e31169c5ce2a2767a6187";
         document.querySelectorAll('.ad-trigger').forEach(btn => {
             btn.addEventListener('click', function(e) {
