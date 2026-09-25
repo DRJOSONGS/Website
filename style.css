@@ -1,18 +1,26 @@
 /* --- 1. बेसिक बॉडी सेटिंग --- */
-        html, body {
-            height: 100%; /* फुटर को नीचे रखने के लिए जरूरी */
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            display: flex;
-            flex-direction: column; /* फुटर फिक्स करने के लिए */
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f7f6;
-            color: #000000;
-        }
+     *, *::before, *::after {
+           box-sizing: border-box;
+     }
+html, body {
+    height: 100%;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;     /* राइट साइड के कटने और स्क्रॉल आने को पूरी तरह रोकेगा */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    color: #000000;
+}
+
 /* --- 2. हेडर --- */
 /* --- Ultra-Premium Glass Master CSS --- */
         .ultra-heavy-hdr {
@@ -24,7 +32,7 @@
             overflow: hidden;
             perspective: 2000px;
             border-bottom: 1px solid #ff0000;
-            padding: 5px 1px;
+            padding: 5px 0px;
             width: 100%;
             flex-direction: column;
         }
